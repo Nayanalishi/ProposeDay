@@ -13,7 +13,7 @@
       margin: 0;
       font-family: 'Playfair Display', serif;
       text-align: center;
-      background: linear-gradient(to bottom right, #ffd1dc, #fff0f5);
+      background: linear-gradient(to bottom right, #ffd6e8, #ffeef6);
       color: #5a0025;
       overflow-x: hidden;
     }
@@ -21,11 +21,12 @@
     .slide {
       min-height: 100vh;
       padding: 40px 20px;
+      position: relative;
     }
 
     .quote {
       font-size: 1.4rem;
-      max-width: 720px;
+      max-width: 700px;
       margin: 90px auto 40px;
       line-height: 1.8;
     }
@@ -33,19 +34,25 @@
     .ring-btn {
       font-size: 4rem;
       cursor: pointer;
+      animation: pulse 1.5s infinite;
     }
 
     .tap-text {
       font-style: italic;
-      margin-top: 8px;
+      margin-top: 6px;
       opacity: 0.8;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
     }
 
     /* SECOND SLIDE */
     .slide2 {
       display: none;
-      position: relative;
-      background: linear-gradient(to bottom right, #fff0f5, #ffe4ec);
+      background: linear-gradient(to bottom right, #ffe3f0, #fff5fa);
       color: #4a001f;
       overflow: hidden;
     }
@@ -55,49 +62,40 @@
       margin-top: 40px;
     }
 
-    .sub-text {
-      font-size: 1.6rem;
-      margin-bottom: 25px;
+    .love-text {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
     }
 
     .main-img {
-      width: 280px;
+      width: 300px;
       max-width: 85%;
       border-radius: 25px;
-      margin: 25px auto;
+      margin: 20px auto;
       display: block;
       box-shadow: 0 15px 30px rgba(0,0,0,0.25);
       z-index: 2;
       position: relative;
     }
 
-    .proposal-text {
-      font-size: 1.4rem;
+    .partner-text {
+      font-size: 1.3rem;
       margin-top: 15px;
-      z-index: 2;
-      position: relative;
     }
 
-    /* HEARTS */
+    /* Floating Hearts */
     .heart {
       position: absolute;
-      top: -10px;
-      font-size: 18px;
-      opacity: 0.5;
+      top: -10%;
+      font-size: 1.2rem;
+      opacity: 0.6;
       animation: fall linear infinite;
-      z-index: 1;
+      color: #ff4d88;
     }
 
     @keyframes fall {
-      0% {
-        transform: translateY(0);
-        opacity: 0;
-      }
-      10% {
-        opacity: 0.6;
-      }
-      100% {
-        transform: translateY(110vh);
+      to {
+        transform: translateY(120vh);
         opacity: 0;
       }
     }
@@ -109,8 +107,8 @@
   <!-- SLIDE 1 -->
   <div class="slide" id="slide1">
     <div class="quote">
-      “I don’t need a perfect story.  
-      I just need you — today, tomorrow, and always.”
+      “Some people come into your life quietly…  
+      and suddenly, you can’t imagine your future without them.”
     </div>
 
     <div class="ring-btn" onclick="showSlide2()">💍</div>
@@ -120,34 +118,36 @@
   <!-- SLIDE 2 -->
   <div class="slide slide2" id="slide2">
     <h1>Happy Propose Day</h1>
-    <div class="sub-text">My Forever 💖</div>
+    <div class="love-text">Will you be mine forever? 💖</div>
 
-    <!-- Replace image if you want -->
-    <img src="roseday.jpeg" class="main-img" alt="Propose Day Image">
+    <img src="proposeday.png" class="main-img" alt="Propose Day Image">
 
-    <div class="proposal-text">
-      Will you hold my hand  
-      and choose me — always? 💍🌹
+    <div class="partner-text">
+      💞 From my heart to yours 💍
     </div>
   </div>
 
   <script>
     function showSlide2() {
       document.getElementById("slide1").style.display = "none";
-      const slide2 = document.getElementById("slide2");
-      slide2.style.display = "block";
-      startHearts();
+      document.getElementById("slide2").style.display = "block";
+      createHearts();
     }
 
-    function startHearts() {
+    function createHearts() {
       const slide = document.getElementById("slide2");
       for (let i = 0; i < 25; i++) {
         const heart = document.createElement("div");
         heart.className = "heart";
-        heart.innerHTML = "💗";
+        heart.innerHTML = "❤";
         heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+        heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+        heart.style.fontSize = (12 + Math.random() * 14) + "px";
         slide.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 8000);
       }
     }
   </script>
