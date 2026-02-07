@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Happy Propose Day 💍</title>
 
-  <!-- Romantic Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+  <!-- Romantic elegant fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,500&family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
 
   <style>
     body {
       margin: 0;
       font-family: 'Playfair Display', serif;
       text-align: center;
-      background: linear-gradient(to bottom right, #ffd6e8, #ffeef6);
-      color: #5a0025;
+      background: linear-gradient(135deg, #ffe4ee, #fff7fb);
+      color: #4a0022;
       overflow-x: hidden;
     }
 
@@ -24,73 +24,85 @@
       position: relative;
     }
 
+    /* SLIDE 1 — QUOTE */
     .quote {
-      font-size: 1.4rem;
-      max-width: 700px;
-      margin: 90px auto 40px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.9rem;
+      max-width: 720px;
+      margin: 110px auto 50px;
       line-height: 1.8;
+      color: #6a1b3a;
     }
 
     .ring-btn {
-      font-size: 4rem;
+      font-size: 4.2rem;
       cursor: pointer;
-      animation: pulse 1.5s infinite;
+      animation: softPulse 1.6s infinite;
     }
 
     .tap-text {
-      font-style: italic;
       margin-top: 6px;
-      opacity: 0.8;
+      font-style: italic;
+      opacity: 0.75;
     }
 
-    @keyframes pulse {
+    @keyframes softPulse {
       0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
+      50% { transform: scale(1.08); }
       100% { transform: scale(1); }
     }
 
-    /* SECOND SLIDE */
+    /* SLIDE 2 — PROPOSAL */
     .slide2 {
       display: none;
-      background: linear-gradient(to bottom right, #ffe3f0, #fff5fa);
-      color: #4a001f;
+      background: linear-gradient(135deg, #fff0f6, #ffe6ef);
       overflow: hidden;
     }
 
     .slide2 h1 {
-      font-size: 3rem;
+      font-size: 3.1rem;
       margin-top: 40px;
+      font-weight: 600;
     }
 
-    .love-text {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
+    .sub-text {
+      font-size: 1.6rem;
+      margin-bottom: 25px;
+      font-style: italic;
+      color: #7a0036;
     }
 
     .main-img {
       width: 300px;
       max-width: 85%;
-      border-radius: 25px;
-      margin: 20px auto;
+      border-radius: 26px;
+      margin: 25px auto;
       display: block;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-      z-index: 2;
+      box-shadow: 0 18px 35px rgba(0,0,0,0.25);
       position: relative;
+      z-index: 2;
     }
 
-    .partner-text {
-      font-size: 1.3rem;
-      margin-top: 15px;
+    .proposal-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.9rem;
+      max-width: 650px;
+      margin: 20px auto;
+      line-height: 1.7;
+      position: relative;
+      z-index: 2;
+      color: #5c002a;
     }
 
-    /* Floating Hearts */
+    /* Floating hearts */
     .heart {
       position: absolute;
       top: -10%;
-      font-size: 1.2rem;
-      opacity: 0.6;
+      font-size: 18px;
+      opacity: 0.45;
       animation: fall linear infinite;
-      color: #ff4d88;
+      z-index: 1;
+      pointer-events: none;
     }
 
     @keyframes fall {
@@ -107,8 +119,10 @@
   <!-- SLIDE 1 -->
   <div class="slide" id="slide1">
     <div class="quote">
-      “Some people come into your life quietly…  
-      and suddenly, you can’t imagine your future without them.”
+      “No matter how far apart we are,  
+      I know that our hearts will always be connected.  
+      <br>
+      I love you — endlessly.”
     </div>
 
     <div class="ring-btn" onclick="showSlide2()">💍</div>
@@ -118,36 +132,40 @@
   <!-- SLIDE 2 -->
   <div class="slide slide2" id="slide2">
     <h1>Happy Propose Day</h1>
-    <div class="love-text">Will you be mine forever? 💖</div>
+    <div class="sub-text">My Forever 💖</div>
 
+    <!-- IMAGE -->
     <img src="proposeday.png" class="main-img" alt="Propose Day Image">
 
-    <div class="partner-text">
-      💞 From my heart to yours 💍
+    <div class="proposal-text">
+      I don’t promise a perfect life,  
+      but I promise a love that chooses you —  
+      in every version of tomorrow.  
+      <br><br>
+      Will you be mine, always? 💍
     </div>
   </div>
 
   <script>
     function showSlide2() {
       document.getElementById("slide1").style.display = "none";
-      document.getElementById("slide2").style.display = "block";
-      createHearts();
+      const slide2 = document.getElementById("slide2");
+      slide2.style.display = "block";
+      startHearts();
     }
 
-    function createHearts() {
+    function startHearts() {
       const slide = document.getElementById("slide2");
-      for (let i = 0; i < 25; i++) {
+      for (let i = 0; i < 30; i++) {
         const heart = document.createElement("div");
         heart.className = "heart";
         heart.innerHTML = "❤";
         heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+        heart.style.animationDuration = (5 + Math.random() * 5) + "s";
         heart.style.fontSize = (12 + Math.random() * 14) + "px";
         slide.appendChild(heart);
 
-        setTimeout(() => {
-          heart.remove();
-        }, 8000);
+        setTimeout(() => heart.remove(), 9000);
       }
     }
   </script>
