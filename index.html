@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Propose Day 💍</title>
+
+  <!-- Romantic Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      text-align: center;
+      background: linear-gradient(to bottom right, #ffd1dc, #fff0f5);
+      color: #5a0025;
+      overflow-x: hidden;
+    }
+
+    .slide {
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .quote {
+      font-size: 1.4rem;
+      max-width: 720px;
+      margin: 90px auto 40px;
+      line-height: 1.8;
+    }
+
+    .ring-btn {
+      font-size: 4rem;
+      cursor: pointer;
+    }
+
+    .tap-text {
+      font-style: italic;
+      margin-top: 8px;
+      opacity: 0.8;
+    }
+
+    /* SECOND SLIDE */
+    .slide2 {
+      display: none;
+      position: relative;
+      background: linear-gradient(to bottom right, #fff0f5, #ffe4ec);
+      color: #4a001f;
+      overflow: hidden;
+    }
+
+    .slide2 h1 {
+      font-size: 3rem;
+      margin-top: 40px;
+    }
+
+    .sub-text {
+      font-size: 1.6rem;
+      margin-bottom: 25px;
+    }
+
+    .main-img {
+      width: 280px;
+      max-width: 85%;
+      border-radius: 25px;
+      margin: 25px auto;
+      display: block;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+      z-index: 2;
+      position: relative;
+    }
+
+    .proposal-text {
+      font-size: 1.4rem;
+      margin-top: 15px;
+      z-index: 2;
+      position: relative;
+    }
+
+    /* HEARTS */
+    .heart {
+      position: absolute;
+      top: -10px;
+      font-size: 18px;
+      opacity: 0.5;
+      animation: fall linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SLIDE 1 -->
+  <div class="slide" id="slide1">
+    <div class="quote">
+      “I don’t need a perfect story.  
+      I just need you — today, tomorrow, and always.”
+    </div>
+
+    <div class="ring-btn" onclick="showSlide2()">💍</div>
+    <div class="tap-text">tap</div>
+  </div>
+
+  <!-- SLIDE 2 -->
+  <div class="slide slide2" id="slide2">
+    <h1>Happy Propose Day</h1>
+    <div class="sub-text">My Forever 💖</div>
+
+    <!-- Replace image if you want -->
+    <img src="roseday.jpeg" class="main-img" alt="Propose Day Image">
+
+    <div class="proposal-text">
+      Will you hold my hand  
+      and choose me — always? 💍🌹
+    </div>
+  </div>
+
+  <script>
+    function showSlide2() {
+      document.getElementById("slide1").style.display = "none";
+      const slide2 = document.getElementById("slide2");
+      slide2.style.display = "block";
+      startHearts();
+    }
+
+    function startHearts() {
+      const slide = document.getElementById("slide2");
+      for (let i = 0; i < 25; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💗";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+        slide.appendChild(heart);
+      }
+    }
+  </script>
+
+</body>
+</html>
